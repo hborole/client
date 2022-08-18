@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+
+    const response = await axios.post('/api/users/signup', { email, password });
+    console.log(response.data);
   };
 
   return (
@@ -17,7 +20,6 @@ export default function SignUp() {
         <label>Email Address</label>
         <input
           className="form-control"
-          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
