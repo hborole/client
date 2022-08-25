@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 export default function TicketDetail({ ticket }) {
@@ -8,7 +9,7 @@ export default function TicketDetail({ ticket }) {
     body: {
       ticketId: ticket.id,
     },
-    onSuccess: (order) => console.log(order),
+    onSuccess: (order) => Router.push(`/orders/${order.id}`),
   });
 
   const onBuyClick = () => {
