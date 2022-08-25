@@ -7,7 +7,9 @@ function MyApp({ Component, pageProps, currentUser }) {
   return (
     <>
       <Header currentUser={currentUser} />
-      <Component {...pageProps} currentUser={currentUser} />
+      <div className="container">
+        <Component {...pageProps} currentUser={currentUser} />
+      </div>
     </>
   );
 }
